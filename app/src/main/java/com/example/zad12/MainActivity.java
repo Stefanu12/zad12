@@ -1,7 +1,7 @@
 package com.example.zad12;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import java.util.ArrayList;
@@ -16,24 +16,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 1. Znajdź RecyclerView w layoucie
         usersRecyclerView = findViewById(R.id.usersRecyclerView);
 
-        // 2. Przygotuj źródło danych
         List<User> users = new ArrayList<>();
-        users.add(new User("Jan", "Kowalski"));
-        users.add(new User("Anna", "Nowak"));
-        users.add(new User("Piotr", "Zieliński"));
+        users.add(new User("Jan", "Kowalski", R.drawable.avatar1));
+        users.add(new User("Anna", "Nowak", R.drawable.avatar2));
+        users.add(new User("Piotr", "Zieliński", R.drawable.avatar3));
 
-
-
-        // ... dodaj więcej użytkowników
-
-        // 3. Stwórz Adapter i przekaż mu dane
         UserAdapter adapter = new UserAdapter(users);
-
-        // 4. Ustaw Adapter i LayoutManager dla RecyclerView
         usersRecyclerView.setAdapter(adapter);
-        usersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        usersRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
 }
